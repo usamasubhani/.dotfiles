@@ -1,0 +1,220 @@
+#see https://i3wm.org/docs/userguide.html for a complete reference!
+
+
+## --- Required Settings --- ##
+set $mod Mod4
+set $term --no-startup-id urxvt
+
+font pango:DejaVu Sans Mono 18
+# enable gaps
+for_window [class="^.*"] border pixel 2
+
+# set gaps
+gaps inner 15
+gaps outer 15
+
+
+
+## --- Startup --- ##
+
+#Enable tap to click
+exec_always --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+
+#launch polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#Network Manager applet
+exec --no-startup-id nm-applet
+
+#Launch Unclutter
+exec_always unclutter
+#Feh set random wallpaper
+exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+
+
+# Extend Monitor
+exec --no-startup-id xrandr --output  VGA1 --auto --right-of LVDS1 
+#Composite manager:
+exec compton -b
+
+
+
+
+## --- SPECIAL BINDINGS --- ##
+
+# Launch Terminal
+bindsym $mod+Return exec $term
+
+# Extend Monitor Shortcut
+bindsym XF86Display exec ~/Scripts/monitors.sh
+
+
+# Move focused workspace to monitor
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
+# Enable media keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -10%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+# Set Random Wallpaper
+
+bindsym $mod+slash exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+
+## --- Function Key Bindings --- ##
+
+bindsym $mod+F1 exec mupdf ~/Documents/Setup/bindings.pdf
+
+bindsym $mod+F2 exec mupdf ~/Documents/Setup/vim.pdf
+
+bindsym $mod+F3 exec ~/Scripts/monitors.sh
+
+bindsym $mod+F4 exec gksudo ~/Scripts/mountData.sh
+## --- Extra Keys --- ##
+
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+##-- Letter Bindings --##
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+
+# Launch Ranger
+
+bindsym $mod+Shift+w exec $term -depth 0 -e ranger 
+
+# exit i3
+bindsym $mod+Shift+e exec i3-msg exit 
+
+# Resize Window
+bindsym $mod+r mode "resize"
+
+# restart i3
+bindsym $mod+Shift+r restart
+
+# Start Canto (RSS client)
+bindsym $mod+Shift+a exec $term -e canto-curses
+
+# Decrease/Increas Gaps
+bindsym $mod+Shift+s gaps inner current plus 5
+bindsym $mod+s gaps inner current minus 5
+
+# Remove Gaps
+bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0;
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run -b
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# launch firefox shortcut
+bindsym $mod+Shift+f exec firefox
+
+# Windows bindings (vim keys) 
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# split in horizontal orientation
+bindsym $mod+Shift+h split h
+
+# Suspend
+bindsym $mod+Shift+z exec ~/.config/i3/lock.sh && systemctl suspend
+
+# Lock Screen
+bindsym $mod+x exec ~/.config/i3/lock.sh
+bindsym XF86ScreenSaver exec ~/.config/i3/lock.sh
+
+# ShutDown
+bindsym $mod+Shift+x exec shutdown -h now 
+
+# Calcurse
+bindsym $mod+c exec $term -e calcurse
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# Launch Nemo
+bindsym $mod+n exec caja
+
+
+
+
+## --- Window Bindings --- ##
+
+# Change Focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Focused Window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+
+
+## --- Workspace Bindings --- ##
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Resize Mode Bindings
+mode "resize" {
+       	bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+
