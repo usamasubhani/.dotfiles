@@ -25,8 +25,9 @@ exec --no-startup-id nm-applet
 
 #Launch Unclutter
 exec_always unclutter
-#Feh set random wallpaper
-exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+
+#set wallpaper
+exec --no-startup-id feh --bg-fill ~/Pictures/pape
 
 
 # Extend Monitor
@@ -56,9 +57,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -10%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Set Random Wallpaper
-
-bindsym $mod+slash exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
-
+bindsym $mod+slash exec ~/Scripts/randpape.sh
 ## --- Function Key Bindings --- ##
 
 bindsym $mod+F1 exec mupdf ~/Documents/Setup/bindings.pdf
