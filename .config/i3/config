@@ -17,9 +17,6 @@ gaps outer 15
 
 ## --- Startup --- ##
 
-#Enable tap to click
-exec_always --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-
 #launch polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
