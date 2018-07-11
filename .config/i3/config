@@ -69,9 +69,9 @@ bindsym $mod+F3 exec ~/Scripts/monitors.sh
 bindsym $mod+F4 exec gksudo ~/Scripts/mountData.sh
 ## --- Extra Keys --- ##
 
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 10
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 10
 
 ##-- Letter Bindings --##
 
@@ -124,8 +124,9 @@ bindsym $mod+Shift+h split h
 bindsym $mod+Shift+z exec ~/.config/i3/lock.sh && systemctl suspend
 
 # Lock Screen
-bindsym $mod+x exec ~/.config/i3/lock.sh
-bindsym XF86ScreenSaver exec ~/.config/i3/lock.sh
+#bindsym $mod+x exec ~/.config/i3/lock.sh
+#bindsym XF86ScreenSaver exec ~/.config/i3/lock.sh
+bindsym $mod+x exec betterlockscreen -l dim
 
 # ShutDown
 bindsym $mod+Shift+x exec shutdown -h now 
