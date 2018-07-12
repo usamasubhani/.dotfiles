@@ -31,7 +31,7 @@ exec --no-startup-id feh --bg-fill ~/Pictures/pape
 
 
 # Extend Monitor
-exec --no-startup-id xrandr --output  VGA1 --auto --right-of LVDS1 
+exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 
 #Composite manager:
 exec compton -b
 
@@ -121,7 +121,8 @@ bindsym $mod+l focus right
 bindsym $mod+Shift+h split h
 
 # Suspend
-bindsym $mod+Shift+z exec ~/.config/i3/lock.sh && systemctl suspend
+#bindsym $mod+Shift+z exec ~/.config/i3/lock.sh && systemctl suspend
+bindsym $mod+Shift+z exec systemctl suspend &&  betterlockscreen -l blur
 
 # Lock Screen
 #bindsym $mod+x exec ~/.config/i3/lock.sh

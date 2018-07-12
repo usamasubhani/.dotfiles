@@ -1,10 +1,8 @@
 ; https://github.com/jaagr/polybar
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -41,9 +39,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3 cpu memory temperature battery
+modules-left = i3 cpu temperature  memory battery
 modules-center = date
-modules-right =  xbacklight volume wlan eth 
+modules-right =  backlight volume 
 
 tray-position = right
 tray-padding = 2
@@ -131,9 +129,9 @@ label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-[module/xbacklight]
-type = internal/xbacklight
-
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 format = <label> <bar>
 label = BL
 
@@ -149,7 +147,7 @@ bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
-inherit = module/xbacklight
+inherit = module/backlight
 type = internal/backlight
 card = intel_backlight
 
@@ -246,7 +244,6 @@ interval = 5
 
 date =" %d-%m-%y"
 time = %I:%M %p
-time-alt = %H:%M:%S
 label = %time%   %date%  
 
 [module/volume]
@@ -319,7 +316,7 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
 
 [module/powermenu]
 type = custom/menu
