@@ -5,7 +5,7 @@
 set $mod Mod4
 set $term --no-startup-id urxvt
 
-font pango:DejaVu Sans Mono 18
+#font pango:DejaVu Sans Mono 18
 # enable gaps
 for_window [class="^.*"] border pixel 2
 
@@ -27,14 +27,14 @@ exec --no-startup-id nm-applet
 exec_always unclutter
 
 #set wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/pape
-
+#exec --no-startup-id feh --bg-fill ~/Pictures/pape
+#exec_always --no-startup-id wal -i ~/Pictures/pape.png
+exec wal -R
 
 # Extend Monitor
 exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 
 #Composite manager:
 exec compton -b
-
 
 
 
