@@ -32,7 +32,7 @@ exec_always unclutter
 exec wal -R
 
 # Extend Monitor
-exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 
+#exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 
 #Composite manager:
 exec compton -b
 
