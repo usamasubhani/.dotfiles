@@ -1,6 +1,7 @@
 <div align="center">
 <h2>.dotfiles</h2>
 </div>
+
 > I have taken the blue pill. Currently using Manjaro XFCE.
 
 - Distro: [Arch](https://www.archlinux.org/)
