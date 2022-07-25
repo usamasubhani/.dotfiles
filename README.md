@@ -2,7 +2,7 @@
 <h2>.dotfiles</h2>
 </div>
 
-> I have taken the blue pill. Currently using Manjaro XFCE.
+> Update: I have taken the blue pill, can't believe I wasted so much time on this. (Currently using Manjaro XFCE)
 
 - Distro: [Arch](https://www.archlinux.org/)
 - DE/WM: [i3-gaps](https://github.com/Airblader/i3)
